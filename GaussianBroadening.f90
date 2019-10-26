@@ -38,7 +38,8 @@ input = trim(arg)
 
 inquire(file=input, exist=alive)
 if( .not. alive) then
-   write(*,*) input, "does not exist! "
+   write(*,*) input, "input_file does not exist! "
+   write(*,*) input, "Usage:  ./command input_file min max step sigma"
    stop
 end if
 
