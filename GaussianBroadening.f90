@@ -1,6 +1,6 @@
 !---------------------------
 PROGRAM GaussianBroadening
-!---------------------------
+!------------------------------------------------------------------------------------------------------------
 !
 ! Purpose : Perform a Gaussian broadening on a set of impulse signal
 ! data as input.
@@ -19,9 +19,8 @@ PROGRAM GaussianBroadening
 !           in which, width     : FWHM, full width at half maximum,        e.g., 3.0
 !                     Xmin, Xmax: the range of X in output, e.g., 500          3000
 !                     Xstep     : the increment of X in the output,  e.g., 2
+!------------------------------------------------------------------------------------------------------------
 !
-
-
 implicit none
 
 integer, parameter     :: dp = kind(1.0d0)
