@@ -73,6 +73,12 @@ end do
 
 ! Uncomment the following line if you want to output to file
 ! open(unit=outputfile,file="g-broadended.dat", status='replace',  action='write')
+!write(outputfile,*) "./command input_file Xmin Xmax step sigma"
+!write(outputfile,*) " inputfile= ", input
+!write(outputfile,*) " Xmin= ", Xmin
+!write(outputfile,*) " Xmax= ", Xmax
+!write(outputfile,*) " step= ", step
+!write(outputfile,*) " sigma= ",sigma
 
 pi = 2.0 * acos(0.0_dp)
 
