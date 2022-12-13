@@ -71,7 +71,7 @@ do i = 1, nline
      read(unit=inputfile,FMT=*,iostat=stat) X0(i), Y0(i)
 end do
 
-! Uncomment the following line if you want to output to file
+! Uncomment the following 7 lines if you want to export the broadening result to a file
 ! open(unit=outputfile,file="g-broadended.dat", status='replace',  action='write')
 ! write(outputfile,*) "./command input_file Xmin Xmax step sigma"
 ! write(outputfile,*) " inputfile= ", input
@@ -91,7 +91,7 @@ do while(X .le. Xmax)
              /(2.0*sigma*sigma) )
        end if
      end do
-   ! uncomment the following line if you want to output to file
+   ! uncomment the following line if you want to export the broadening result to a file
    !  write(unit=outputfile,fmt="(F9.1,1X,F15.8)") X, Y
      write(*,fmt="(F9.1,1X,F15.8)") X, Y
      X = X + step
