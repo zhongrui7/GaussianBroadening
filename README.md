@@ -11,6 +11,7 @@ If you want to get an output file with final data,  uncomment related 2 lines.  
 Usage:  ./command input_file min max step sigma
 UsageEx : plot '&lt; gbroad.x input.dat width Xmin Xmax Xstep &lt; ' u 1:2 
 ! ... !           in which, 
+
 width     : FWHM, full width at half maximum,        e.g., 3.0 !                     
 Xmin, Xmax: the range of X in output, e.g., 500          3000 !                     
 Xstep     : the increment of X in the output,  e.g., 2 !
