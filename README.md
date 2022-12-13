@@ -9,7 +9,8 @@ No output file to be written, since it is designed to output to standard screen 
 If you want to get an output file with final data,  uncomment related 2 lines.  you would get 'g-broadened.dat' 
 
 Usage:  ./command input_file min max step sigma
-UsageEx : plot '&lt; gbroad.x input.dat width Xmin Xmax Xstep &lt; ' u 1:2 
+
+UsageEx : plot '&lt; gbroad.x input.dat width Xmin Xmax Xstep &lt; ' 
 ! ... !           in which, 
 
 width     : FWHM, full width at half maximum,        e.g., 3.0 !                     
