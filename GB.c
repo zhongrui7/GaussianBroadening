@@ -50,7 +50,7 @@ int main()
       printf("Input %d: %lf %lf\n",i, xvalue[i], yvalue[i]);
   }
 
-  // calculate and write to file
+  // calculate and export the broadening result to a file
   range = xMax-xMin;
   xStep = range/100;
 
