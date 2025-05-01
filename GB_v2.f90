@@ -34,7 +34,7 @@ end if
 
 call getarg(2, arg)
 read(arg, *) sigma
-step = sigma/2
+step = sigma/10
 
 ! open and count number of lines in input file
 open(unit=inputfile, file=input, access="sequential", status="old")
