@@ -4,13 +4,11 @@ PROGRAM GaussianBroadening
 !
 ! Purpose : Perform a Gaussian broadening on a set of impulse signal
 ! data as input.
-!           You must input the range and the step of the output data in
-!           the proper order.
-! Usage:  ./command input_file step sigma
+! Usage:  ./command input_file sigma
 ! ...
-!             width     : FWHM, full width at half maximum,        e.g., 3.0
-!             Xmin, Xmax: the range of X in output, e.g., 500          3000
-!             Xstep     : the increment of X in the output,  e.g., 2
+!           in which, width     : FWHM, full width at half maximum,        e.g., 3.0
+!                     Xmin, Xmax: the range of X in output, e.g., 500          3000
+!                     Xstep     : the increment of X in the output,  e.g., 2
 !------------------------------------------------------------------------------------------------------------
 !
 implicit none
@@ -30,14 +28,13 @@ input = trim(arg)
 inquire(file=input, exist=alive)
 if( .not. alive) then
    write(*,*) input, "input_file does not exist! "
-   write(*,*) input, "Usage:  ./command input_file step sigma"
+   write(*,*) input, "Usage:  ./command input_file sigma"
    stop
 end if
 
 call getarg(2, arg)
-read(arg, *) step
-call getarg(3, arg)
 read(arg, *) sigma
+step = sigma/2
 
 ! open and count number of lines in input file
 open(unit=inputfile, file=input, access="sequential", status="old")
@@ -73,8 +70,8 @@ Xmax = X0(nline)
 
 pi = 2.0 * acos(0.0_dp)
 
-Xmin = Xmin - 5.0*step - sigma
-Xmax = Xmax + 5.0*step + sigma
+Xmin = Xmin - 5.0*sigma
+Xmax = Xmax + 5.0*sigma
 
 
 X = Xmin
@@ -87,7 +84,7 @@ do while(X .le. Xmax)
        end if
      end do
    ! uncomment the following line if you want to export the broadening result to a file
-     write(unit=outputfile,fmt="(F9.1,1X,F15.8)") X, Y
+   !  write(unit=outputfile,fmt="(F9.1,1X,F15.8)") X, Y
      write(*,fmt="(F9.1,1X,F15.8)") X, Y
      X = X + step
 end do
