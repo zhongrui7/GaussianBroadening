@@ -1,9 +1,9 @@
 !---------------------------
 PROGRAM GaussianBroadening
 !------------------------------------------------------------------------------------------------------------
-!
-! Purpose : Perform a Gaussian broadening on a set of impulse signal
-! data as input.
+! Purpose : Perform a Gaussian broadening on a set of impulse signal data as input.
+! 
+! Suppose the input data are sorted in ascending order
 ! Usage:  ./command input_file sigma
 ! ...
 !           in which, width     : FWHM, full width at half maximum,        e.g., 3.0
