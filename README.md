@@ -18,5 +18,7 @@ Xmin, Xmax: the range of X in output, e.g., 500          3000 !
 Xstep     : the increment of X in the output,  e.g., 2 !
 
 # Version 2 usage
+
 gfortran -o GB_v2.x GB_v2.f90 
+
 ./command input_file sigma
