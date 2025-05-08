@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
         exit(EXIT_FAILURE);
     }
 
-    int size = 0, i;
+    int size = 0, i, j;
     char *line = NULL;
     size_t len = 0;
     ssize_t read;
@@ -87,7 +87,7 @@ int main(int argc, char *argv[])
     xMin = xvalue[0] - 5 * sigma;
     xMax = xvalue[size - 1] + 5 * sigma;
     xStep = sigma / 5;
-
+    j = 0;
     double x = xMin;
     while (x <= xMax + xStep / 2) { // Added epsilon to handle floating-point precision
         double y = 0.0;
@@ -100,6 +100,7 @@ int main(int argc, char *argv[])
         fprintf(fp, "%lf %lf\n", x, y);
         printf("Output[%d]: %lf %lf\n", i, x, y);
         x += xStep;
+        j++;
     }
 
     fclose(myFile);
