@@ -98,7 +98,7 @@ int main(int argc, char *argv[])
             }
         }
         fprintf(fp, "%lf %lf\n", x, y);
-        printf("Output: %lf %lf\n", x, y);
+        printf("Output[%d]: %lf %lf\n", i, x, y);
         x += xStep;
     }
 
