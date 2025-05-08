@@ -1,7 +1,7 @@
 // ------------------------------------------------------------------------------------------------------------
 //  Purpose : Perform a Gaussian broadening on a set of impulse signal data as input.
 //! Suppose the input data is sorted in ascending order
-// gcc -O2 -lm GaussianB.c -o Gb.x
+// gcc -O2 -lm GB.c -o Gb.x
 //! Usage:  ./command input_file sigma
 // ...
 //          in which, command     : Gb.x
