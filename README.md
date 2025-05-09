@@ -8,8 +8,10 @@
            If you want an output file with final data, uncomment the related 2 lines.
            You would get 'g-broadened.dat'
  Usage   :  ./command input_file min max step sigma
+ 
  UsageEx :  plot '< gbroad.x input.dat width Xmin Xmax Xstep < ' u 1:2
  ...
+ 
            in which, sigma     : the standard deviation of the Gaussian distribution is ⁠σ⁠ (sigma)
                      Xmin, Xmax: the range of X in the output
                      Xstep     : the increment of X in the output
