@@ -14,9 +14,9 @@ PROGRAM GaussianBroadening
 implicit none
 
 integer, parameter     :: dp = kind(1.0d0)
-real(dp), allocatable  :: X0(:), Y0(:) ! 0 - input, no 0 - output
+real(dp), allocatable  :: X0(:), Y0(:)     ! X0 - X[i]_input, Y0 - Y[i]_input
 real(dp) ::  X, Y, Xmin, Xmax, sigma, step, pi  
-integer  :: i, j, nline, stat  ! nline: number of lines
+integer  ::  i, j, nline, stat             ! nline: number of lines
 integer, parameter     :: inputfile = 10, outputfile = 20
 character(len=20)      :: arg, input, output
 character(len=100)     :: temp
