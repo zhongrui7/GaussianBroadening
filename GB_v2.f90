@@ -6,21 +6,23 @@ PROGRAM GaussianBroadening
 ! Suppose the input data are sorted in ascending order
 ! Usage:  ./command input_file sigma
 ! ...
-!           in which, width     : FWHM, full width at half maximum,        e.g., 3.0
-!                     Xmin, Xmax: the range of X in output, e.g., 500          3000
-!                     Xstep     : the increment of X in the output,  e.g., 2
+!          in which, command     : Gb_v2.x
+!                    input_file  : filename of impulse data
+!                    sigma       : The standard deviation of the distribution is ⁠σ⁠ (sigma)
 !------------------------------------------------------------------------------------------------------------
 !
 implicit none
 
 integer, parameter     :: dp = kind(1.0d0)
+real(dp), allocatable  :: X0(:), Y0(:) ! 0 - input, no 0 - output
+real(dp) ::  X, Y, Xmin, Xmax, sigma, step, pi  
+integer  :: i, j, nline, stat  ! nline: number of lines
+integer, parameter     :: inputfile = 10, outputfile = 20
 character(len=20)      :: arg, input, output
 character(len=100)     :: temp
-real(dp), allocatable  :: X0(:), Y0(:) ! 0 - input, no 0 - output
-integer,parameter      :: inputfile = 10, outputfile = 20
-real(dp) ::  X, Y, Xmin, Xmax, Ysum, Yavg, sigma, step, pi ! sigma2 is sigmasquare
-integer  :: i, j, nline, stat  ! nline: number of lines
 logical  :: alive
+
+pi = 2.0 * acos(0.0_dp)
 
 CALL getarg(1, arg)
 input = trim(arg)
@@ -36,7 +38,7 @@ call getarg(2, arg)
 read(arg, *) sigma
 step = sigma/10
 
-! open and count number of lines in input file
+! Open and count the number of lines in the input file
 open(unit=inputfile, file=input, access="sequential", status="old")
 
 nline = 0
@@ -51,28 +53,21 @@ rewind(inputfile)
 ! allocate memory for arrays X0, Y0
 allocate(X0(1:nline), Y0(1:nline))
 
-
-! read in data from input file
+! Read in data from the input file
 do i = 1, nline
      read(unit=inputfile,FMT=*,iostat=stat) X0(i), Y0(i)
 end do
 
-Xmin = X0(1)
-Xmax = X0(nline)
+Xmin = X0(1) - 5.0*sigma
+Xmax = X0(nline) + 5.0*sigma
 
-! Create new filename with suffix
+! Create a new filename with the suffix
  output = trim(input) // trim("_GB.dat")
  open(unit=outputfile,file=output, status='replace',  action='write')
  write(outputfile,*) "./command input_file step sigma"
  write(outputfile,*) " inputfile= ", input
  write(outputfile,*) " step= ", step
  write(outputfile,*) " sigma= ",sigma
-
-pi = 2.0 * acos(0.0_dp)
-
-Xmin = Xmin - 5.0*sigma
-Xmax = Xmax + 5.0*sigma
-
 
 X = Xmin
 do while(X .le. Xmax)
@@ -83,7 +78,7 @@ do while(X .le. Xmax)
              /(2.0*sigma*sigma) )
        end if
      end do
-   ! uncomment the following line if you want to export the broadening result to a file
+   ! Uncomment the following line if you want to export the broadening result to a file
    !  write(unit=outputfile,fmt="(F9.1,1X,F15.8)") X, Y
      write(*,fmt="(F9.1,1X,F15.8)") X, Y
      X = X + step
